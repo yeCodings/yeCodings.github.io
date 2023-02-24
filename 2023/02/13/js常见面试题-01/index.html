@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript基础问题(一) | yecoding Blog </title>
+    <meta name="generator" content="VuePress 1.9.8">
+    
+    <meta name="description" content="JavaScript有哪些数据类型，它们的区别">
+    <meta name="title" content="JavaScript有哪些数据类型，它们的区别？">
+    <meta name="keywords" content="JavaScript,数据类型">
+    <meta name="author" content="yeCodings">
+    <meta name="language" content="中文">
+    
+    <link rel="preload" href="/assets/css/0.styles.8f4760b9.css" as="style"><link rel="preload" href="/assets/js/app.910dc115.js" as="script"><link rel="preload" href="/assets/js/4.5b8d8b22.js" as="script"><link rel="preload" href="/assets/js/13.c961a1cb.js" as="script"><link rel="preload" href="/assets/js/6.d2ea23d8.js" as="script"><link rel="prefetch" href="/assets/js/10.dcbecad9.js"><link rel="prefetch" href="/assets/js/11.bc878eb5.js"><link rel="prefetch" href="/assets/js/12.7ad4a89b.js"><link rel="prefetch" href="/assets/js/14.95c14d5f.js"><link rel="prefetch" href="/assets/js/15.554403c9.js"><link rel="prefetch" href="/assets/js/16.08abd0f0.js"><link rel="prefetch" href="/assets/js/17.b3c10cd1.js"><link rel="prefetch" href="/assets/js/18.6e7e20b1.js"><link rel="prefetch" href="/assets/js/19.d462b7fe.js"><link rel="prefetch" href="/assets/js/20.6f403a75.js"><link rel="prefetch" href="/assets/js/21.8a262424.js"><link rel="prefetch" href="/assets/js/22.c0bf7021.js"><link rel="prefetch" href="/assets/js/23.243528c8.js"><link rel="prefetch" href="/assets/js/3.70520c45.js"><link rel="prefetch" href="/assets/js/5.9cf19b34.js"><link rel="prefetch" href="/assets/js/7.b101bcbb.js"><link rel="prefetch" href="/assets/js/8.ab8a61c9.js"><link rel="prefetch" href="/assets/js/9.c8857f5c.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.ff28ef25.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8f4760b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="global-layout d-flex flex-column"><header id="header" class="shadow"><nav class="p-3 d-flex desktop-menu justify-content-between"><div class="d-flex blog-info-wrapper"><a href="/" class="text-decoration-none m-0 router-link-active"><div class="card-img-bg d-inline-block blog-logo"><img src="https://static.oschina.net/uploads/img/201506/29163716_QJtH.gif" height="70px"></div></a> <a href="/" class="blog-title router-link-active"><div class="h4 text-center">
+          yecoding Blog 
+        </div></a></div> <ul role="menubar" class="d-flex justify-content-center border-0 el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-house"></i>
+    Home
+  </li><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-folder"></i>
+    Projects
+  </li></ul> <div class="search-wrapper u-px3 d-flex align-items-center"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-4086" class="el-autocomplete"><div class="el-input el-input--small"><!----><input type="text" autocomplete="off" valueKey="value" popperClass="components-search" placeholder="Search" fetchSuggestions="function () { [native code] }" debounce="200" placement="bottom-end" popperAppendToBody="true" class="el-input__inner"><!----><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper components-search" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <div id="toggle"><div id="top" class="span"></div> <div id="middle" class="span"></div> <div id="bottom" class="span"></div></div></nav> <div class="flex-column align-items-center mobile-menu pb-4"><ul role="menubar" class="d-flex justify-content-center border-0 el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-house"></i>
+    Home
+  </li><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-folder"></i>
+    Projects
+  </li></ul> <div class="search-wrapper u-px3 d-flex align-items-center pt-4"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-685" class="el-autocomplete"><div class="el-input el-input--small"><!----><input type="text" autocomplete="off" valueKey="value" popperClass="components-search" placeholder="Search" fetchSuggestions="function () { [native code] }" debounce="200" placement="bottom-end" popperAppendToBody="true" class="el-input__inner"><!----><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper components-search" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div></div></header> <div id="vuperess-theme-blog__post-layout"><div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h3 active"><a href="#_1-javascript有哪些数据类型-它们的区别" title="1. JavaScript有哪些数据类型，它们的区别？">1. JavaScript有哪些数据类型，它们的区别？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-数据类型的检测方式有哪些" title="2. 数据类型的检测方式有哪些？">2. 数据类型的检测方式有哪些？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_3-intanceof-操作符的实现原理及实现" title="3. intanceof 操作符的实现原理及实现">3. intanceof 操作符的实现原理及实现</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_4-object-assign和扩展运算法是深拷贝还是浅拷贝-两者区别" title="4. object.assign和扩展运算法是深拷贝还是浅拷贝，两者区别">4. object.assign和扩展运算法是深拷贝还是浅拷贝，两者区别</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_5-在-js-中不同进制数字的表示方式" title="5. 在 js 中不同进制数字的表示方式？">5. 在 js 中不同进制数字的表示方式？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_6-js-中整数的安全范围是多少" title="6. js 中整数的安全范围是多少？">6. js 中整数的安全范围是多少？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_7-typeof-nan-的结果是什么" title="7. typeof NaN 的结果是什么？">7. typeof NaN 的结果是什么？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_8-isnan-和-number-isnan-函数的区别" title="8. isNaN 和 Number.isNaN 函数的区别？">8. isNaN 和 Number.isNaN 函数的区别？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_9-其他值到字符串的转换规则" title="9. 其他值到字符串的转换规则？">9. 其他值到字符串的转换规则？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_10-其他值到数字值的转换规则" title="10. 其他值到数字值的转换规则？">10. 其他值到数字值的转换规则？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_11-和-的-valueof-和-tostring-的结果是什么" title="11. {} 和 [] 的 valueOf 和 toString 的结果是什么？">11. {} 和 [] 的 valueOf 和 toString 的结果是什么？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_12-什么是假值对象" title="12. 什么是假值对象?">12. 什么是假值对象?</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_13-操作符的作用" title="13. ~ 操作符的作用？">13. ~ 操作符的作用？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_14-解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字-它们之间的区别是什么" title="14.  解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字，它们之间的区别是什么？">14.  解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字，它们之间的区别是什么？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_15-什么情况下会发生布尔值的隐式强制类型转换" title="15. 什么情况下会发生布尔值的隐式强制类型转换？">15. 什么情况下会发生布尔值的隐式强制类型转换？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_16-symbol-值的强制类型转换" title="16. Symbol 值的强制类型转换？">16. Symbol 值的强制类型转换？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_17-如何将字符串转化为数字-例如-12-3b" title="17. 如何将字符串转化为数字，例如 '12.3b'?">17. 如何将字符串转化为数字，例如 '12.3b'?</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_18-如何将浮点数点左边的数每三位添加一个逗号-如-12000000-11-转化为『12-000-000-11』" title="18. 如何将浮点数点左边的数每三位添加一个逗号，如 12000000.11 转化为『12,000,000.11』?">18. 如何将浮点数点左边的数每三位添加一个逗号，如 12000000.11 转化为『12,000,000.11』?</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_19-常用正则表达式" title="19. 常用正则表达式">19. 常用正则表达式</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_20-javascript-创建对象的几种方式" title="20. javascript 创建对象的几种方式？">20. javascript 创建对象的几种方式？</a></div></div> <main class="vuepress-blog-theme-content"><div class="el-card mb-4 is-always-shadow"><!----><div class="el-card__body" style="padding:0;"><img src="https://img.zcool.cn/community/01f9fc5c432d69a801203d22d4b81a.jpg@1280w_1l_2o_100sh.jpg" alt="JavaScript基础问题(一)" class="w-100"> <div class="p-3"><h1 align="center">
+            JavaScript基础问题(一)
+          </h1> <div class="ui-post-info d-flex text-secondary d-flex justify-content-center my-3"><div class="post-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    2023年2月13日星期一
+  </div> <div class="post-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    4 min read
+  </div> <!----></div></div></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><span>不登高山，不知天之高也；不临深溪，不知地之厚也</span></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><div class="content__default"><h3 id="_1-javascript有哪些数据类型-它们的区别"><a href="#_1-javascript有哪些数据类型-它们的区别" class="header-anchor">#</a> 1. JavaScript有哪些数据类型，它们的区别？</h3> <p><code>JavaScript</code>共有八种数据类型，分别是</p> <p><code>Undefined</code>: 未定义的值，只有 <code>Undefined</code>自身；</p> <p><code>Null</code>: 空值，只有<code>Null</code>自身；</p> <p><code>Boolean</code>: 布尔值， <code>true</code> 或 <code>false</code>;</p> <p><code>Number</code>: 数值， 自然数；</p> <p><code>String</code>: 字符串；</p> <p><code>Object</code>: 对象类型，一切皆对象；</p> <p><code>Symbol</code>: 独一无二且不可变的数据类型；</p> <p><code>BigInt</code>: 数字类型的数据，它可以表示任意精度格式的整数；</p> <p>其中 <code>Symbol</code> 和 <code>BigInt</code> 是ES6 中新增的数据类型：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>Symbol 代表创建后独一无二且不可变的数据类型，它主要是为了解决可能出现的全局变量冲突的问题。
+
+BigInt 是一种数字类型的数据，它可以表示任意精度格式的整数，使用 BigInt 可以安全地存储和
+操作大整数，即使这个数已经超出了 Number 能够表示的安全整数范围
+</code></pre></div><p>这些数据可以分为原始数据类型和引用数据类型：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>栈：原始数据类型（Undefined、Null、Boolean、Number、String）
+堆：引用数据类型（对象、数组和函数）
+</code></pre></div><p>两种类型的区别在于<strong>存储位置</strong>的不同：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>原始数据类型直接存储在栈（stack）中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，
+所以放入栈中存储；
+引用数据类型存储在堆（heap）中的对象，占据空间大、大小不固定。如果存储在栈中，将会影响程序
+运行的性能；
+引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先
+检索其在栈中的地址，取得地址后从堆中获得实体。
+</code></pre></div><p>堆和栈的概念存在于数据结构和操作系统内存中，在数据结构中：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>在数据结构中，栈中数据的存取方式为先进后出。
+堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大小来规定。
+</code></pre></div><p>在操作系统中，内存被分为栈区和堆区：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。
+堆区内存一般由开发着分配释放，若开发者不释放，程序结束时可能由垃圾回收机制回收。
+</code></pre></div><h3 id="_2-数据类型的检测方式有哪些"><a href="#_2-数据类型的检测方式有哪些" class="header-anchor">#</a> 2. 数据类型的检测方式有哪些？</h3> <ul><li><code>typeof</code> 判断基本数据类型</li> <li><code>instanceof</code> 可以正确判断对象的类型</li> <li><code>constructor</code> 基本数据类型和简单的对象类型</li> <li><code>Object.prototype.toString.call()</code> 推荐使用</li></ul> <ul><li>typeof</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>console.log<span class="token punctuation">(</span>typeof <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               // number
+console.log<span class="token punctuation">(</span>typeof <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            // boolean
+console.log<span class="token punctuation">(</span>typeof <span class="token string">'str'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           // string
+console.log<span class="token punctuation">(</span>typeof <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              // object    
+console.log<span class="token punctuation">(</span>typeof <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    // <span class="token keyword">function</span>
+console.log<span class="token punctuation">(</span>typeof <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              // object
+console.log<span class="token punctuation">(</span>typeof undefined<span class="token punctuation">)</span><span class="token punctuation">;</span>       // undefined
+console.log<span class="token punctuation">(</span>typeof null<span class="token punctuation">)</span><span class="token punctuation">;</span>            // object
+
+其中数组、对象、null都会被判断为object，其他判断都正确。
+</code></pre></div><ul><li>instanceof</li></ul> <p><code>instanceof</code>可以正确判断对象的类型，其内部运行机制是判断在其原型链中能否找到该类型的原型。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>console.log<span class="token punctuation">(</span><span class="token number">2</span> instanceof Number<span class="token punctuation">)</span><span class="token punctuation">;</span>                    // <span class="token boolean">false</span>
+console.log<span class="token punctuation">(</span>true instanceof Boolean<span class="token punctuation">)</span><span class="token punctuation">;</span>                // <span class="token boolean">false</span> 
+console.log<span class="token punctuation">(</span><span class="token string">'str'</span> instanceof String<span class="token punctuation">)</span><span class="token punctuation">;</span>                // <span class="token boolean">false</span> 
+ 
+console.log<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span> instanceof Array<span class="token punctuation">)</span><span class="token punctuation">;</span>                    // <span class="token boolean">true</span>
+console.log<span class="token punctuation">(</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> instanceof Function<span class="token punctuation">)</span><span class="token punctuation">;</span>       // <span class="token boolean">true</span>
+console.log<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span> instanceof Object<span class="token punctuation">)</span><span class="token punctuation">;</span>                   // <span class="token boolean">true</span>
+
+可以看到，instanceof只能正确判断引用数据类型，而不能判断基本数据类型。instanceof 运算符可
+以用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。
+</code></pre></div><ul><li>constructor</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>console.log<span class="token punctuation">((</span><span class="token number">2</span><span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> Number<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+console.log<span class="token punctuation">((</span>true<span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> Boolean<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+console.log<span class="token punctuation">((</span><span class="token string">'str'</span><span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> String<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+console.log<span class="token punctuation">((</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> Array<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+console.log<span class="token punctuation">((</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> Function<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+console.log<span class="token punctuation">((</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>.constructor <span class="token operator">==</span><span class="token operator">=</span> Object<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+</code></pre></div><p>constructor有两个作用，一是判断数据的类型，二是对象实例通过 constrcutor 对象访问它的构造函数。
+需要注意，如果创建一个对象来改变它的原型，constructor就不能用来判断数据类型了</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> <span class="token function-name function">Fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+ 
+Fn.prototype <span class="token operator">=</span> new Array<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+var f <span class="token operator">=</span> new Fn<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+console.log<span class="token punctuation">(</span>f.constructor<span class="token operator">==</span><span class="token operator">=</span>Fn<span class="token punctuation">)</span><span class="token punctuation">;</span>    // <span class="token boolean">false</span>
+console.log<span class="token punctuation">(</span>f.constructor<span class="token operator">==</span><span class="token operator">=</span>Array<span class="token punctuation">)</span><span class="token punctuation">;</span> // <span class="token boolean">true</span>
+</code></pre></div><ul><li>Object.prototype.toString.call() 使用 Object 对象的原型方法 toString 来判断数据类型：</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>var a <span class="token operator">=</span> Object.prototype.toString<span class="token punctuation">;</span>
+ 
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span>true<span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span><span class="token string">'str'</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span><span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span>undefined<span class="token punctuation">))</span><span class="token punctuation">;</span>
+console.log<span class="token punctuation">(</span>a.call<span class="token punctuation">(</span>null<span class="token punctuation">))</span><span class="token punctuation">;</span>
+
+Object.prototype.toString.call<span class="token punctuation">(</span>obj<span class="token punctuation">)</span>.slice<span class="token punctuation">(</span><span class="token number">8</span>,-1<span class="token punctuation">)</span> <span class="token operator">==</span><span class="token operator">=</span> <span class="token string">'Array'</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_3-intanceof-操作符的实现原理及实现"><a href="#_3-intanceof-操作符的实现原理及实现" class="header-anchor">#</a> 3. intanceof 操作符的实现原理及实现</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> myInstanceof<span class="token punctuation">(</span>left, right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  // 获取对象的原型
+  <span class="token builtin class-name">let</span> proto <span class="token operator">=</span> Object.getPrototypeOf<span class="token punctuation">(</span>left<span class="token punctuation">)</span>
+  // 获取构造函数的 prototype 对象
+  <span class="token builtin class-name">let</span> prototype <span class="token operator">=</span> right.prototype<span class="token punctuation">;</span> 
+ 
+  // 判断构造函数的 prototype 对象是否在对象的原型链上
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>proto<span class="token punctuation">)</span> <span class="token builtin class-name">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>proto <span class="token operator">==</span><span class="token operator">=</span> prototype<span class="token punctuation">)</span> <span class="token builtin class-name">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    // 如果没有找到，就继续从其原型上找，Object.getPrototypeOf方法用来获取指定对象的原型
+    proto <span class="token operator">=</span> Object.getPrototypeOf<span class="token punctuation">(</span>proto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="_4-object-assign和扩展运算法是深拷贝还是浅拷贝-两者区别"><a href="#_4-object-assign和扩展运算法是深拷贝还是浅拷贝-两者区别" class="header-anchor">#</a> 4. object.assign和扩展运算法是深拷贝还是浅拷贝，两者区别</h3> <p>扩展运算符：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">let</span> outObj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  inObj: <span class="token punctuation">{</span>a: <span class="token number">1</span>, b: <span class="token number">2</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token builtin class-name">let</span> newObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">..</span>.outObj<span class="token punctuation">}</span>
+newObj.inObj.a <span class="token operator">=</span> <span class="token number">2</span>
+console.log<span class="token punctuation">(</span>outObj<span class="token punctuation">)</span> // <span class="token punctuation">{</span>inObj: <span class="token punctuation">{</span>a: <span class="token number">2</span>, b: <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code>Object.assign<span class="token punctuation">(</span><span class="token punctuation">)</span>:
+
+<span class="token builtin class-name">let</span> outObj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  inObj: <span class="token punctuation">{</span>a: <span class="token number">1</span>, b: <span class="token number">2</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token builtin class-name">let</span> newObj <span class="token operator">=</span> Object.assign<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span>, outObj<span class="token punctuation">)</span>
+newObj.inObj.a <span class="token operator">=</span> <span class="token number">2</span>
+console.log<span class="token punctuation">(</span>outObj<span class="token punctuation">)</span> // <span class="token punctuation">{</span>inObj: <span class="token punctuation">{</span>a: <span class="token number">2</span>, b: <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre></div><p>可以看到，两者都是浅拷贝。</p> <p>Object.assign()方法接收的第一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象
+合并到目标对象中。它会修改了一个对象，因此会触发 ES6 setter。
+扩展操作符（…）使用它时，数组或对象中的每一个值都会被拷贝到一个新的数组或对象中。它不复制继承的
+属性或类的属性，但是它会复制ES6的 symbols 属性。</p> <h3 id="_5-在-js-中不同进制数字的表示方式"><a href="#_5-在-js-中不同进制数字的表示方式" class="header-anchor">#</a> 5. 在 js 中不同进制数字的表示方式？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>以 0X、0x 开头的表示为十六进制。
+
+以 <span class="token number">0</span>、0O、0o 开头的表示为八进制。
+
+以 0B、0b 开头的表示为二进制格式
+</code></pre></div><h3 id="_6-js-中整数的安全范围是多少"><a href="#_6-js-中整数的安全范围是多少" class="header-anchor">#</a> 6. js 中整数的安全范围是多少？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>安全整数指的是，在这个范围内的整数转化为二进制存储的时候不会出现精度丢失，
+能够被“安全”呈现的最大整数是 <span class="token number">2</span>^53 - <span class="token number">1</span>，
+即9007199254740991，在 ES6 中被定义为 Number.MAX_SAFE_INTEGER。
+最小整数是-9007199254740991，在 ES6 中被定义为 Number.MIN_SAFE_INTEGER。
+
+如果某次计算的结果得到了一个超过 JavaScript 数值范围的值，那么这个值会被自动转
+换为特殊的 Infinity 值。如果某次计算返回了正或负的 Infinity 值，那么该值将无法
+参与下一次的计算。判断一个数是不是有穷的，可以使用 isFinite 函数来判断。
+</code></pre></div><h3 id="_7-typeof-nan-的结果是什么"><a href="#_7-typeof-nan-的结果是什么" class="header-anchor">#</a> 7. typeof NaN 的结果是什么？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>NaN 意指“不是一个数字”（not a number），NaN 是一个“警戒值”（sentinel value，有特殊
+用途的常规值），用于指出数字类型中的错误情况，即“执行数学运算没有成功，这是失败后返回的结果”。
+
+typeof NaN<span class="token punctuation">;</span> // <span class="token string">&quot;number&quot;</span>
+
+NaN 是一个特殊值，它和自身不相等，是唯一一个非自反（自反，reflexive，即 x <span class="token operator">==</span><span class="token operator">=</span> x 不成立）
+的值。而 NaN <span class="token operator">!=</span> NaN为 true。
+</code></pre></div><h3 id="_8-isnan-和-number-isnan-函数的区别"><a href="#_8-isnan-和-number-isnan-函数的区别" class="header-anchor">#</a> 8. isNaN 和 Number.isNaN 函数的区别？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，
+因此非数字值传入也会返回 <span class="token boolean">true</span> ，会影响 NaN 的判断。
+
+函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，这种方法
+对于 NaN 的判断更为准确。
+</code></pre></div><h3 id="_9-其他值到字符串的转换规则"><a href="#_9-其他值到字符串的转换规则" class="header-anchor">#</a> 9. 其他值到字符串的转换规则？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>规范的 <span class="token number">9.8</span> 节中定义了抽象操作 ToString ，它负责处理非字符串到字符串的强制类型转换。
+
+（1）Null 和 Undefined 类型 ，null 转换为 <span class="token string">&quot;null&quot;</span>，undefined 转换为 <span class="token string">&quot;undefined&quot;</span>，
+
+（2）Boolean 类型，true 转换为 <span class="token string">&quot;true&quot;</span>，false 转换为 <span class="token string">&quot;false&quot;</span>。
+
+（3）Number 类型的值直接转换，不过那些极小和极大的数字会使用指数形式。
+
+（4）Symbol 类型的值直接转换，但是只允许显式强制类型转换，使用隐式强制类型转换会产生错误。
+
+（3）对普通对象来说，除非自行定义 toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，否则会调用 toString<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ （Object.prototype.toString<span class="token punctuation">(</span><span class="token punctuation">)</span>）来返回内部属性 <span class="token punctuation">[</span><span class="token punctuation">[</span>Class<span class="token punctuation">]</span><span class="token punctuation">]</span> 的值，如<span class="token string">&quot;[object Object]&quot;</span>。
+  如果对象有自己的 toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，字符串化时就会调用该方法并使用其返回值。
+</code></pre></div><h3 id="_10-其他值到数字值的转换规则"><a href="#_10-其他值到数字值的转换规则" class="header-anchor">#</a> 10. 其他值到数字值的转换规则？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>有时我们需要将非数字值当作数字来使用，比如数学运算。为此 ES5 规范在 <span class="token number">9.3</span> 节定义了
+抽象操作 ToNumber。
+
+（1）Undefined 类型的值转换为 NaN。
+
+（2）Null 类型的值转换为 <span class="token number">0</span>。
+
+（3）Boolean 类型的值，true 转换为 <span class="token number">1</span>，false 转换为 <span class="token number">0</span>。
+
+（4）String 类型的值转换如同使用 Number<span class="token punctuation">(</span><span class="token punctuation">)</span> 函数进行转换，如果包含非数字值则转换为 NaN，
+    空字符串为 <span class="token number">0</span>。
+
+（5）Symbol 类型的值不能转换为数字，会报错。
+
+（6）对象（包括数组）会首先被转换为相应的基本类型值，如果返回的是非数字的基本类型值，则再遵
+    循以上规则将其强制转换为数字。
+
+为了将值转换为相应的基本类型值，抽象操作 ToPrimitive 会首先（通过内部操作 DefaultValue）
+检查该值是否有valueOf<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法。如果有并且返回基本类型值，就使用该值进行强制类型转换。如果没有
+就使用 toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 的返回值（如果存在）来进行强制类型转换。
+
+如果 valueOf<span class="token punctuation">(</span><span class="token punctuation">)</span> 和 toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 均不返回基本类型值，会产生 TypeError 错误。
+</code></pre></div><h3 id="_11-和-的-valueof-和-tostring-的结果是什么"><a href="#_11-和-的-valueof-和-tostring-的结果是什么" class="header-anchor">#</a> 11. {} 和 [] 的 valueOf 和 toString 的结果是什么？</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span><span class="token punctuation">}</span> 的 valueOf 结果为 <span class="token punctuation">{</span><span class="token punctuation">}</span> ，toString 的结果为 <span class="token string">&quot;[object Object]&quot;</span>
+
+<span class="token punctuation">[</span><span class="token punctuation">]</span> 的 valueOf 结果为 <span class="token punctuation">[</span><span class="token punctuation">]</span> ，toString 的结果为 <span class="token string">&quot;&quot;</span>
+</code></pre></div><h3 id="_12-什么是假值对象"><a href="#_12-什么是假值对象" class="header-anchor">#</a> 12. 什么是假值对象?</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>浏览器在某些特定情况下，在常规 JavaScript 语法基础上自己创建了一些外来值，这些就是“假值对象”。
+假值对象看起来和普通对象并无二致（都有属性，等等），但将它们强制类型转换为布尔值时结果为 <span class="token boolean">false</span>
+最常见的例子是 document.all，它是一个类数组对象，包含了页面上的所有元素，由 DOM（而不是 
+JavaScript 引擎）提供给 JavaScript 程序使用。
+</code></pre></div><h3 id="_13-操作符的作用"><a href="#_13-操作符的作用" class="header-anchor">#</a> 13. ~ 操作符的作用？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>~ 返回 <span class="token number">2</span> 的补码，并且 ~ 会将数字转换为 <span class="token number">32</span> 位整数，因此我们可以使用 ~ 来进行取整操作。
+
+~x 大致等同于 -<span class="token punctuation">(</span>x+1<span class="token punctuation">)</span>。
+</code></pre></div><h3 id="_14-解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字-它们之间的区别是什么"><a href="#_14-解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字-它们之间的区别是什么" class="header-anchor">#</a> 14.  解析字符串中的数字和将字符串强制类型转换为数字的返回结果都是数字，它们之间的区别是什么？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>解析允许字符串（如 parseInt<span class="token punctuation">(</span><span class="token punctuation">)</span> ）中含有非数字字符，解析按从左到右的顺序，如果遇到非数字字符就
+停止。而转换（如 Number <span class="token punctuation">(</span><span class="token punctuation">)</span>）不允许出现非数字字符，否则会失败并返回 NaN。
+</code></pre></div><h3 id="_15-什么情况下会发生布尔值的隐式强制类型转换"><a href="#_15-什么情况下会发生布尔值的隐式强制类型转换" class="header-anchor">#</a> 15. 什么情况下会发生布尔值的隐式强制类型转换？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>（1） <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">..</span><span class="token punctuation">)</span> 语句中的条件判断表达式。
+（2） <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token punctuation">..</span> <span class="token punctuation">;</span> <span class="token punctuation">..</span> <span class="token punctuation">;</span> <span class="token punctuation">..</span> <span class="token punctuation">)</span> 语句中的条件判断表达式（第二个）。
+（3） <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">..</span><span class="token punctuation">)</span> 和 do<span class="token punctuation">..</span>while<span class="token punctuation">(</span><span class="token punctuation">..</span><span class="token punctuation">)</span> 循环中的条件判断表达式。
+（4） ? <span class="token builtin class-name">:</span> 中的条件判断表达式。
+（5） 逻辑运算符 <span class="token operator">||</span>（逻辑或）和 <span class="token operator">&amp;&amp;</span>（逻辑与）左边的操作数（作为条件判断表达式）。
+</code></pre></div><h3 id="_16-symbol-值的强制类型转换"><a href="#_16-symbol-值的强制类型转换" class="header-anchor">#</a> 16. Symbol 值的强制类型转换？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>ES6 允许从符号到字符串的显式强制类型转换，然而隐式强制类型转换会产生错误。
+
+Symbol 值不能够被强制类型转换为数字（显式和隐式都会产生错误），但可以被强制类型转换为布尔值
+（显式和隐式结果都是 <span class="token boolean">true</span> ）。
+</code></pre></div><h3 id="_17-如何将字符串转化为数字-例如-12-3b"><a href="#_17-如何将字符串转化为数字-例如-12-3b" class="header-anchor">#</a> 17. 如何将字符串转化为数字，例如 '12.3b'?</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>（1）使用 Number<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，前提是所包含的字符串不包含不合法字符。
+
+（2）使用 parseInt<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，parseInt<span class="token punctuation">(</span><span class="token punctuation">)</span> 函数可解析一个字符串，并返回一个整数。还可以设置要
+    解析的数字的基数。当基数的值为 <span class="token number">0</span>，或没有设置该参数时，parseInt<span class="token punctuation">(</span><span class="token punctuation">)</span> 会根据 string 来判断
+    数字的基数。
+
+（3）使用 parseFloat<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，该函数解析一个字符串参数并返回一个浮点数。
+
+（4）使用 + 操作符的隐式转换。
+</code></pre></div><h3 id="_18-如何将浮点数点左边的数每三位添加一个逗号-如-12000000-11-转化为『12-000-000-11』"><a href="#_18-如何将浮点数点左边的数每三位添加一个逗号-如-12000000-11-转化为『12-000-000-11』" class="header-anchor">#</a> 18. 如何将浮点数点左边的数每三位添加一个逗号，如 12000000.11 转化为『12,000,000.11』?</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> format<span class="token punctuation">(</span>number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin class-name">return</span> number <span class="token operator">&amp;&amp;</span> number.replace<span class="token punctuation">(</span>/<span class="token punctuation">(</span>?<span class="token operator">!</span>^<span class="token punctuation">)</span><span class="token punctuation">(</span>?<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">\</span>d<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span>+<span class="token punctuation">\</span>.<span class="token punctuation">)</span>/g, <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_19-常用正则表达式"><a href="#_19-常用正则表达式" class="header-anchor">#</a> 19. 常用正则表达式</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>// （1）匹配 <span class="token number">16</span> 进制颜色值
+var regex <span class="token operator">=</span> /<span class="token comment">#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g;</span>
+
+// （2）匹配日期，如 yyyy-mm-dd 格式
+var regex <span class="token operator">=</span> /^<span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>-<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">[</span><span class="token number">1</span>-9<span class="token punctuation">]</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">[</span><span class="token number">0</span>-2<span class="token punctuation">]</span><span class="token punctuation">)</span>-<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">[</span><span class="token number">1</span>-9<span class="token punctuation">]</span><span class="token operator">|</span><span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span><span class="token operator">|</span><span class="token number">3</span><span class="token punctuation">[</span>01<span class="token punctuation">]</span><span class="token punctuation">)</span>$/<span class="token punctuation">;</span>
+
+// （3）匹配 qq 号
+var regex <span class="token operator">=</span> /^<span class="token punctuation">[</span><span class="token number">1</span>-9<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">4,10</span><span class="token punctuation">}</span>$/g<span class="token punctuation">;</span>
+
+// （4）手机号码正则
+var regex <span class="token operator">=</span> /^1<span class="token punctuation">[</span><span class="token number">34578</span><span class="token punctuation">]</span><span class="token punctuation">\</span>d<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>$/g<span class="token punctuation">;</span>
+
+// （5）用户名正则
+var regex <span class="token operator">=</span> /^<span class="token punctuation">[</span>a-zA-Z<span class="token punctuation">\</span>$<span class="token punctuation">]</span><span class="token punctuation">[</span>a-zA-Z0-9_<span class="token punctuation">\</span>$<span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">4,16</span><span class="token punctuation">}</span>$/<span class="token punctuation">;</span>
+</code></pre></div><h3 id="_20-javascript-创建对象的几种方式"><a href="#_20-javascript-创建对象的几种方式" class="header-anchor">#</a> 20. javascript 创建对象的几种方式？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>我们一般使用字面量的形式直接创建对象，但是这种创建方式对于创建大量相似对象的时候，会产生大量
+的重复代码。但 js和一般的面向对象的语言不同，在 ES6 之前它没有类的概念。但是我们可以使用函数
+来进行模拟，从而产生出可复用的对象创建方式，我了解到的方式有这么几种：
+
+（1）第一种是工厂模式，工厂模式的主要工作原理是用函数来封装创建对象的细节，从而通过调用函数来
+  达到复用的目的。但是它有一个很大的问题就是创建出来的对象无法和某个类型联系起来，它只是简单的
+  封装了复用代码，而没有建立起对象和类型间的关系。
+
+（2）第二种是构造函数模式。js 中每一个函数都可以作为构造函数，只要一个函数是通过 new 来调用的，
+  那么我们就可以把它称为构造函数。执行构造函数首先会创建一个对象，然后将对象的原型指向构造函数的
+  prototype 属性，然后将执行上下文中的 this 指向这个对象，最后再执行整个函数，如果返回值不是
+  对象，则返回新建的对象。因为 this 的值指向了新建的对象，因此我们可以使用 this 给对象赋值。
+  构造函数模式相对于工厂模式的优点是，所创建的对象和构造函数建立起了联系，因此我们可以通过原型来
+  识别对象的类型。但是构造函数存在一个缺点就是，造成了不必要的函数对象的创建，因为在 js 中函数
+  也是一个对象，因此如果对象属性中如果包含函数的话，那么每次我们都会新建一个函数对象，浪费了不必要
+  的内存空间，因为函数是所有的实例都可以通用的。
+
+（3）第三种模式是原型模式，因为每一个函数都有一个 prototype 属性，这个属性是一个对象，它包含了
+  通过构造函数创建的所有实例都能共享的属性和方法。因此我们可以使用原型对象来添加公用属性和方法，
+  从而实现代码的复用。这种方式相对于构造函数模式来说，解决了函数对象的复用问题。但是这种模式也存
+  在一些问题，一个是没有办法通过传入参数来初始化值，另一个是如果存在一个引用类型如 Array 这样的
+  值，那么所有的实例将共享一个对象，一个实例对引用类型值的改变会影响所有的实例。
+
+（4）第四种模式是组合使用构造函数模式和原型模式，这是创建自定义类型的最常见方式。因为构造函数模式
+  和原型模式分开使用都存在一些问题，因此我们可以组合使用这两种模式，通过构造函数来初始化对象的
+  属性，通过原型对象来实现函数方法的复用。这种方法很好的解决了两种模式单独使用时的缺点，但是有一
+  点不足的就是，因为使用了两种不同的模式，所以对于代码的封装性不够好。
+
+（5）第五种模式是动态原型模式，这一种模式将原型方法赋值的创建过程移动到了构造函数的内部，通过对
+  属性是否存在的判断，可以实现仅在第一次调用函数时对原型对象赋值一次的效果。这一种方式很好地对
+  上面的混合模式进行了封装。
+
+（6）第六种模式是寄生构造函数模式，这一种模式和工厂模式的实现基本相同，我对这个模式的理解是，
+  它主要是基于一个已有的类型，在实例化时对实例化的对象进行扩展。这样既不用修改原来的构造函数，
+  也达到了扩展对象的目的。它的一个缺点和工厂模式一样，无法实现对象的识别。
+</code></pre></div><hr></div></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><span>时人不识临云木，直待凌云道始高</span></div></div> <div class="el-card mb-4 is-always-shadow"><div class="el-card__header"><div class="clearfix"><h5 class="m-0">
+            Read more
+          </h5></div></div><div class="el-card__body"> <div class="container featured-posts my-4"><div class="el-carousel el-carousel--horizontal el-carousel--card"><div class="el-carousel__container" style="height:300px;"><button type="button" class="el-carousel__arrow el-carousel__arrow--left" style="display:none;"><i class="el-icon-arrow-left"></i></button><button type="button" class="el-carousel__arrow el-carousel__arrow--right" style="display:none;"><i class="el-icon-arrow-right"></i></button><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://img.zcool.cn/community/01f9fc5c432d69a801203d22d4b81a.jpg@1280w_1l_2o_100sh.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          JavaScript基础问题(一)
+        </h4> <a href="/2023/02/13/js%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-01/" aria-current="page" class="el-button el-button--primary router-link-exact-active router-link-active">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://www.2008php.com/2011_Website_appreciate/2011-09-23/20110923163645.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          JavaScript基础问题(二)
+        </h4> <a href="/2023/02/14/js%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-02/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://i.picsum.photos/id/79/800/600.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          Create a modern vuepress blog in 5 minutes!
+        </h4> <a href="/2019/10/14/vuepress-modern-blog-theme/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://img.zcool.cn/community/01cf6858635528a8012060c8b33f77.jpg@1280w_1l_2o_100sh.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见面试题
+        </h4> <a href="/2023/02/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-03/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://pic.bizhi360.com/bbpic/76/5776.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue面试题(二)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue-05/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://img.pconline.com.cn/images/upload/upc/tx/itbbs/2003/10/c9/196420048_1583835136058.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue面试题(一)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue-04/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://up.deskcity.org/pic_source/d6/a6/3c/d6a63c350c8ea49404a71face8f969b5.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue3面试题(三)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue3-06/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div></div><ul class="el-carousel__indicators el-carousel__indicators--horizontal el-carousel__indicators--outside"></ul></div></div></div></div> <div class="el-card is-always-shadow"><div class="el-card__header"><div class="clearfix"><h5 class="m-0">
+            Tags
+          </h5></div></div><div class="el-card__body"> <div><a href="/tag/JavaScript" class="el-button el-button--small text-decoration-none d-inline-block mb-3">
+            #JavaScript
+          </a><a href="/tag/面试题" class="el-button el-button--small text-decoration-none d-inline-block mb-3">
+            #面试题
+          </a></div></div></div> <!----></main></div> <footer class="footer" data-v-85a2b3d2><div class="footer-left-wrap" data-v-85a2b3d2><ul class="contact" data-v-85a2b3d2><li class="contact-item" data-v-85a2b3d2><a href="https://github.com/yeCodings" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-85a2b3d2><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-85a2b3d2></path></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram" data-v-85a2b3d2><rect x="2" y="2" width="20" height="20" rx="5" ry="5" data-v-85a2b3d2></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" data-v-85a2b3d2></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" data-v-85a2b3d2></line></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin" data-v-85a2b3d2><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" data-v-85a2b3d2></path><rect x="2" y="9" width="4" height="12" data-v-85a2b3d2></rect><circle cx="4" cy="4" r="2" data-v-85a2b3d2></circle></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-85a2b3d2><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-85a2b3d2></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-85a2b3d2><ul class="copyright" data-v-85a2b3d2><li class="copyright-item" data-v-85a2b3d2><a data-v-85a2b3d2>MIT Licensed | Copyright © 2018-present Vue.js</a></li></ul></div></footer> <!----></div><div class="global-ui"><!----><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:-1;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.910dc115.js" defer></script><script src="/assets/js/4.5b8d8b22.js" defer></script><script src="/assets/js/13.c961a1cb.js" defer></script><script src="/assets/js/6.d2ea23d8.js" defer></script>
+  </body>
+</html>

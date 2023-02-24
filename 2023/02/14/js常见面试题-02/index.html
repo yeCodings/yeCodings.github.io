@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript基础问题(二) | yecoding Blog </title>
+    <meta name="generator" content="VuePress 1.9.8">
+    
+    <meta name="description" content="原型、原型链">
+    <meta name="title" content="js原型、原型链相关问题">
+    <meta name="keywords" content="JavaScript,原型、原型链、闭包...">
+    <meta name="author" content="yeCodings">
+    <meta name="language" content="中文">
+    
+    <link rel="preload" href="/assets/css/0.styles.8f4760b9.css" as="style"><link rel="preload" href="/assets/js/app.910dc115.js" as="script"><link rel="preload" href="/assets/js/4.5b8d8b22.js" as="script"><link rel="preload" href="/assets/js/14.95c14d5f.js" as="script"><link rel="preload" href="/assets/js/6.d2ea23d8.js" as="script"><link rel="prefetch" href="/assets/js/10.dcbecad9.js"><link rel="prefetch" href="/assets/js/11.bc878eb5.js"><link rel="prefetch" href="/assets/js/12.7ad4a89b.js"><link rel="prefetch" href="/assets/js/13.c961a1cb.js"><link rel="prefetch" href="/assets/js/15.554403c9.js"><link rel="prefetch" href="/assets/js/16.08abd0f0.js"><link rel="prefetch" href="/assets/js/17.b3c10cd1.js"><link rel="prefetch" href="/assets/js/18.6e7e20b1.js"><link rel="prefetch" href="/assets/js/19.d462b7fe.js"><link rel="prefetch" href="/assets/js/20.6f403a75.js"><link rel="prefetch" href="/assets/js/21.8a262424.js"><link rel="prefetch" href="/assets/js/22.c0bf7021.js"><link rel="prefetch" href="/assets/js/23.243528c8.js"><link rel="prefetch" href="/assets/js/3.70520c45.js"><link rel="prefetch" href="/assets/js/5.9cf19b34.js"><link rel="prefetch" href="/assets/js/7.b101bcbb.js"><link rel="prefetch" href="/assets/js/8.ab8a61c9.js"><link rel="prefetch" href="/assets/js/9.c8857f5c.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.ff28ef25.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8f4760b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="global-layout d-flex flex-column"><header id="header" class="shadow"><nav class="p-3 d-flex desktop-menu justify-content-between"><div class="d-flex blog-info-wrapper"><a href="/" class="text-decoration-none m-0 router-link-active"><div class="card-img-bg d-inline-block blog-logo"><img src="https://static.oschina.net/uploads/img/201506/29163716_QJtH.gif" height="70px"></div></a> <a href="/" class="blog-title router-link-active"><div class="h4 text-center">
+          yecoding Blog 
+        </div></a></div> <ul role="menubar" class="d-flex justify-content-center border-0 el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-house"></i>
+    Home
+  </li><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-folder"></i>
+    Projects
+  </li></ul> <div class="search-wrapper u-px3 d-flex align-items-center"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-7104" class="el-autocomplete"><div class="el-input el-input--small"><!----><input type="text" autocomplete="off" valueKey="value" popperClass="components-search" placeholder="Search" fetchSuggestions="function () { [native code] }" debounce="200" placement="bottom-end" popperAppendToBody="true" class="el-input__inner"><!----><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper components-search" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div> <div id="toggle"><div id="top" class="span"></div> <div id="middle" class="span"></div> <div id="bottom" class="span"></div></div></nav> <div class="flex-column align-items-center mobile-menu pb-4"><ul role="menubar" class="d-flex justify-content-center border-0 el-menu--horizontal el-menu" style="background-color:;"><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-house"></i>
+    Home
+  </li><li role="menuitem" tabindex="-1" router="" class="el-menu-item" style="color:;border-bottom-color:transparent;background-color:;"><i class="el-icon-folder"></i>
+    Projects
+  </li></ul> <div class="search-wrapper u-px3 d-flex align-items-center pt-4"><div aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-280" class="el-autocomplete"><div class="el-input el-input--small"><!----><input type="text" autocomplete="off" valueKey="value" popperClass="components-search" placeholder="Search" fetchSuggestions="function () { [native code] }" debounce="200" placement="bottom-end" popperAppendToBody="true" class="el-input__inner"><!----><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper components-search" style="width:;display:none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-autocomplete-suggestion__list"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div></div></div></div></div></header> <div id="vuperess-theme-blog__post-layout"><div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h3 active"><a href="#_1-javascript-原型-原型链-有什么特点" title="1. JavaScript 原型，原型链？有什么特点？">1. JavaScript 原型，原型链？有什么特点？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_2-javascript获取原型的方法" title="2. javaScript获取原型的方法">2. javaScript获取原型的方法</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_3-javascript-继承的几种实现方式" title="3. JavaScript 继承的几种实现方式？">3. JavaScript 继承的几种实现方式？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_4-寄生式组合继承的实现" title="4. 寄生式组合继承的实现？">4. 寄生式组合继承的实现？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_4-javascript-的作用域链" title="4. Javascript 的作用域链">4. Javascript 的作用域链</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_5-谈谈-this-对象的理解。" title="5. 谈谈 This 对象的理解。">5. 谈谈 This 对象的理解。</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_6-eval-是做什么的" title="6. eval 是做什么的？">6. eval 是做什么的？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_7-1-2-3-map-parseint-答案是多少" title="7. [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt) 答案是多少？">7. [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt) 答案是多少？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_8-事件是什么-ie-与火狐的事件机制有什么区别-如何阻止冒泡" title="8. 事件是什么？IE 与火狐的事件机制有什么区别？如何阻止冒泡？">8. 事件是什么？IE 与火狐的事件机制有什么区别？如何阻止冒泡？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_9-三种事件模型是什么" title="9. 三种事件模型是什么？">9. 三种事件模型是什么？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_10-事件委托是什么" title="10. 事件委托是什么？">10. 事件委托是什么？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_11-什么是闭包-为什么要用它" title="11. 什么是闭包，为什么要用它？">11. 什么是闭包，为什么要用它？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_12-如何判断一个对象是否属于某个类" title="12. 如何判断一个对象是否属于某个类?">12. 如何判断一个对象是否属于某个类?</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_13-instanceof-的作用及实现。" title="13.  instanceof 的作用及实现。">13.  instanceof 的作用及实现。</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_14-new-操作符具体干了什么呢-如何实现" title="14. new 操作符具体干了什么呢？如何实现？">14. new 操作符具体干了什么呢？如何实现？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_15-javascript-中-有一个函数-执行时对象查找时-永远不会去查找原型-这个函数是" title="15. Javascript 中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？">15. Javascript 中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_16-foreach-call-function-a-a-style-outline-1px-solid-math-random-1-24-tostring-16-能解释一下这段代码的意思吗" title="16. [].forEach.call($$(&quot;&quot;),function(a){a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()(1&lt;&lt;24))).toString(16)}) 能解释一下这段代码的意思吗？">16. [].forEach.call($$(&quot;&quot;),function(a){a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()(1&lt;&lt;24))).toString(16)}) 能解释一下这段代码的意思吗？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_17-js-延迟加载的方式有哪些" title="17. js 延迟加载的方式有哪些？">17. js 延迟加载的方式有哪些？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_18-ajax-是什么-如何创建一个-ajax" title="18. Ajax 是什么? 如何创建一个 Ajax？">18. Ajax 是什么? 如何创建一个 Ajax？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_19-谈一谈浏览器的缓存机制" title="19. 谈一谈浏览器的缓存机制？">19. 谈一谈浏览器的缓存机制？</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#_20-ajax-解决浏览器缓存问题" title="20. Ajax 解决浏览器缓存问题？">20. Ajax 解决浏览器缓存问题？</a></div></div> <main class="vuepress-blog-theme-content"><div class="el-card mb-4 is-always-shadow"><!----><div class="el-card__body" style="padding:0;"><img src="https://www.2008php.com/2011_Website_appreciate/2011-09-23/20110923163645.jpg" alt="JavaScript基础问题(二)" class="w-100"> <div class="p-3"><h1 align="center">
+            JavaScript基础问题(二)
+          </h1> <div class="ui-post-info d-flex text-secondary d-flex justify-content-center my-3"><div class="post-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    2023年2月14日星期二
+  </div> <div class="post-info-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    5 min read
+  </div> <!----></div></div></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><span>不登高山，不知天之高也；不临深溪，不知地之厚也</span></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><div class="content__default"><h3 id="_1-javascript-原型-原型链-有什么特点"><a href="#_1-javascript-原型-原型链-有什么特点" class="header-anchor">#</a> 1. JavaScript 原型，原型链？有什么特点？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>在 js 中我们是使用构造函数来新建一个对象的，每一个构造函数的内部都有一个 prototype 属性值，
+这个属性值是一个对象，这个对象包含了可以由该构造函数的所有实例共享的属性和方法。当我们使用构
+造函数新建一个对象后，在这个对象的内部将包含一个指针，这个指针指向构造函数的 prototype 属性
+对应的值，在 ES5 中这个指针被称为对象的原型。一般来说我们是不应该能够获取到这个值的，但是现在
+浏览器中都实现了 __proto__ 属性来让我们访问这个属性，但是我们最好不要使用这个属性，因为它不
+是规范中规定的。ES5 中新增了一个 Object.getPrototypeOf<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法，我们可以通过这个方法来获
+取对象的原型。
+
+当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么它就会去它的原型对象里找这个属性，
+这个原型对象又会有自己的原型，于是就这样一直找下去，也就是原型链的概念。原型链的尽头一般来说都是
+Object.prototype 所以这就是我们新建的对象为什么能够使用 toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 等方法的原因。
+
+特点：
+JavaScript 对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我
+们修改原型时，与之相关的对象也会继承这一改变。
+
+</code></pre></div><h3 id="_2-javascript获取原型的方法"><a href="#_2-javascript获取原型的方法" class="header-anchor">#</a> 2. javaScript获取原型的方法</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>p.proto
+p.constructor.prototype
+Object.getPrototypeOf<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-javascript-继承的几种实现方式"><a href="#_3-javascript-继承的几种实现方式" class="header-anchor">#</a> 3. JavaScript 继承的几种实现方式？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>我了解的 js 中实现继承的几种方式有：
+
+（1）第一种是以原型链的方式来实现继承，但是这种实现方式存在的缺点是，在包含有引用类型的数据时，
+  会被所有的实例对象所共享，容易造成修改的混乱。还有就是在创建子类型的时候不能向超类型传递参数。
+
+（2）第二种方式是使用借用构造函数的方式，这种方式是通过在子类型的函数中调用超类型的构造函数来
+  实现的，这一种方法解决了不能向超类型传递参数的缺点，但是它存在的一个问题就是无法实现函数方法
+  的复用，并且超类型原型定义的方法子类型也没有办法访问到。
+
+（3）第三种方式是组合继承，组合继承是将原型链和借用构造函数组合起来使用的一种方式。通过借用构造函
+  数的方式来实现类型的属性的继承，通过将子类型的原型设置为超类型的实例来实现方法的继承。这种方式
+  解决了上面的两种模式单独使用时的问题，但是由于我们是以超类型的实例来作为子类型的原型，所以调用
+  了两次超类的构造函数，造成了子类型的原型中多了很多不必要的属性。
+
+（4）第四种方式是原型式继承，原型式继承的主要思路就是基于已有的对象来创建新的对象，实现的原理是，
+  向函数中传入一个对象，然后返回一个以这个对象为原型的对象。这种继承的思路主要不是为了实现创造
+  一种新的类型，只是对某个对象实现一种简单继承，ES5 中定义的 Object.create<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法就是原型式
+  继承的实现。缺点与原型链方式相同。
+
+（5）第五种方式是寄生式继承，寄生式继承的思路是创建一个用于封装继承过程的函数，通过传入一个对象，
+  然后复制一个对象的副本，然后对象进行扩展，最后返回这个对象。这个扩展的过程就可以理解是一种继承。
+  这种继承的优点就是对一个简单对象实现继承，如果这个对象不是我们的自定义类型时。缺点是没有办法
+  实现函数的复用。
+
+（6）第六种方式是寄生式组合继承，组合继承的缺点就是使用超类型的实例做为子类型的原型，导致添加了不
+  必要的原型属性。寄生式组合继承的方式是使用超类型的原型的副本来作为子类型的原型，这样就避免了创建
+  不必要的属性。
+</code></pre></div><h3 id="_4-寄生式组合继承的实现"><a href="#_4-寄生式组合继承的实现" class="header-anchor">#</a> 4. 寄生式组合继承的实现？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token keyword">function</span> Person<span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Person.prototype.sayName <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console.log<span class="token punctuation">(</span><span class="token string">&quot;My name is &quot;</span> + this.name + <span class="token string">&quot;.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> Student<span class="token punctuation">(</span>name, grade<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Person.call<span class="token punctuation">(</span>this, name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  this.grade <span class="token operator">=</span> grade<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Student.prototype <span class="token operator">=</span> Object.create<span class="token punctuation">(</span>Person.prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Student.prototype.constructor <span class="token operator">=</span> Student<span class="token punctuation">;</span>
+
+Student.prototype.sayMyGrade <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console.log<span class="token punctuation">(</span><span class="token string">&quot;My grade is &quot;</span> + this.grade + <span class="token string">&quot;.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_4-javascript-的作用域链"><a href="#_4-javascript-的作用域链" class="header-anchor">#</a> 4. Javascript 的作用域链</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>作用域链的作用是保证对执行环境有权访问的所有变量和函数的有序访问，通过作用域链，我们可以访问到外层环境的变量和
+函数。
+
+作用域链的本质上是一个指向变量对象的指针列表。变量对象是一个包含了执行环境中所有变量和函数的对象。作用域链的前
+端始终都是当前执行上下文的变量对象。全局执行上下文的变量对象（也就是全局对象）始终是作用域链的最后一个对象。
+
+当我们查找一个变量时，如果当前执行环境中没有找到，我们可以沿着作用域链向后查找。
+
+作用域链的创建过程跟执行上下文的建立有关<span class="token punctuation">..</span><span class="token punctuation">..</span>
+</code></pre></div><h3 id="_5-谈谈-this-对象的理解。"><a href="#_5-谈谈-this-对象的理解。" class="header-anchor">#</a> 5. 谈谈 This 对象的理解。</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>this 是执行上下文中的一个属性，它指向最后一次调用这个方法的对象。在实际开发中，this 的指向可以
+通过四种调用模式来判断。
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token number">1.</span>第一种是函数调用模式，当一个函数不是一个对象的属性时，直接作为函数来调用时，<span class="token keyword">this</span> 指向全局对象。
+
+<span class="token number">2.</span>第二种是方法调用模式，如果一个函数作为一个对象的方法来调用时，<span class="token keyword">this</span> 指向这个对象。
+
+<span class="token number">3.</span>第三种是构造器调用模式，如果一个函数用 <span class="token keyword">new</span> 调用时，函数执行前会新创建一个对象，<span class="token keyword">this</span> 指向这个
+新创建的对象。
+
+<span class="token number">4.</span>第四种是 apply 、 call 和 bind 调用模式，这三个方法都可以显示的指定调用函数的 <span class="token keyword">this</span> 指向。
+  其中 apply 方法接收两个参数：一个是 <span class="token keyword">this</span> 绑定的对象，一个是参数数组。call 方法接收的参数，
+  第一个是 <span class="token keyword">this</span> 绑定的对象，后面的其余参数是传入函数执行的参数。也就是说，在使用 <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 方法
+  时，传递给函数的参数必须逐个列举出来。bind 方法通过传入一个对象，返回一个 <span class="token keyword">this</span> 绑定了传入对象
+  的新函数。这个函数的 <span class="token keyword">this</span> 指向除了使用 <span class="token keyword">new</span> 时会被改变，其他情况下都不会改变
+</code></pre></div><p>这四种方式，使用构造器调用模式的优先级最高，然后是 apply 、 call 和 bind 调用模式，然后是
+方法调用模式，然后是函数调用模式。</p> <h3 id="_6-eval-是做什么的"><a href="#_6-eval-是做什么的" class="header-anchor">#</a> 6. eval 是做什么的？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>它的功能是把对应的字符串解析成 JS 代码并运行。
+
+应该避免使用 eval，不安全，非常耗性能（2次，一次解析成 js 语句，一次执行）。
+</code></pre></div><h3 id="_7-1-2-3-map-parseint-答案是多少"><a href="#_7-1-2-3-map-parseint-答案是多少" class="header-anchor">#</a> 7. [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt) 答案是多少？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>parseInt<span class="token punctuation">(</span><span class="token punctuation">)</span> 函数能解析一个字符串，并返回一个整数，需要两个参数 <span class="token punctuation">(</span>val, radix<span class="token punctuation">)</span>，其中 
+radix 表示要解析的数字的基数。（该值介于 <span class="token number">2</span> ~ <span class="token number">36</span> 之间，并且字符串中的数字不能大于
+radix 才能正确返回数字结果值）。
+
+
+此处 map 传了 <span class="token number">3</span> 个参数 <span class="token punctuation">(</span>element, index, array<span class="token punctuation">)</span>，默认第三个参数被忽略掉，因此三次传
+入的参数分别为 <span class="token string">&quot;1-0&quot;</span>, <span class="token string">&quot;2-1&quot;</span>, <span class="token string">&quot;3-2&quot;</span>
+
+因为字符串的值不能大于基数，因此后面两次调用均失败，返回 NaN ，第一次基数为 <span class="token number">0</span> ，按十进制
+解析返回 <span class="token number">1</span>。
+</code></pre></div><h3 id="_8-事件是什么-ie-与火狐的事件机制有什么区别-如何阻止冒泡"><a href="#_8-事件是什么-ie-与火狐的事件机制有什么区别-如何阻止冒泡" class="header-anchor">#</a> 8. 事件是什么？IE 与火狐的事件机制有什么区别？如何阻止冒泡？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token number">1</span>.事件是用户操作网页时发生的交互动作，比如 click/move， 事件除了用户触发的动作外，还可
+以是文档加载，窗口滚动和大小调整。事件被封装成一个 event 对象，包含了该事件发生时的所有
+相关信息（ event 的属性）以及可以对事件进行的操作（ event 的方法）。
+
+<span class="token number">2</span>.事件处理机制：IE 支持事件冒泡、Firefox 同时支持两种事件模型，也就是：事件冒泡和事件捕获。
+
+<span class="token number">3</span>.event.stopPropagation<span class="token punctuation">(</span><span class="token punctuation">)</span> 或者 ie 下的方法 event.cancelBubble <span class="token operator">=</span> <span class="token boolean">true</span>
+</code></pre></div><h3 id="_9-三种事件模型是什么"><a href="#_9-三种事件模型是什么" class="header-anchor">#</a> 9. 三种事件模型是什么？</h3> <p>事件是用户操作网页时发生的交互动作或者网页本身的一些操作，现代浏览器一共有三种事件模型。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>第一种事件模型是最早的 DOM0 级模型，这种模型不会传播，所以没有事件流的概念，但是现在有的
+浏览器支持以冒泡的方式实现，它可以在网页中直接定义监听函数，也可以通过 js 属性来指定监听
+函数。这种方式是所有浏览器都兼容的。
+
+第二种事件模型是 IE 事件模型，在该事件模型中，一次事件共有两个过程，事件处理阶段，和事件
+冒泡阶段。事件处理阶段会首先执行目标元素绑定的监听事件。然后是事件冒泡阶段，冒泡指的是事件
+从目标元素冒泡到 document，依次检查经过的节点是否绑定了事件监听函数，如果有则执行。这种
+模型通过 attachEvent 来添加监听函数，可以添加多个监听函数，会按顺序依次执行。
+
+第三种是 DOM2 级事件模型，在该事件模型中，一次事件共有三个过程，第一个过程是事件捕获阶
+段。捕获指的是事件从 document 一直向下传播到目标元素，依次检查经过的节点是否绑定了事件监
+听函数，如果有则执行。后面两个阶段和 IE 事件模型的两个阶段相同。这种事件模型，事件绑定的
+函数是 addEventListener，其中第三个参数可以指定事件是否在捕获阶段执行。
+</code></pre></div><h3 id="_10-事件委托是什么"><a href="#_10-事件委托是什么" class="header-anchor">#</a> 10. 事件委托是什么？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>事件委托本质上是利用了浏览器事件冒泡的机制。因为事件在冒泡过程中会上传到父节点，并且父节点可以通过
+事件对象获取到目标节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个
+子元素的事件，这种方式称为事件代理。
+
+使用事件代理我们可以不必要为每一个子元素都绑定一个监听事件，这样减少了内存上的消耗。并且使用事件代理
+我们还可以实现事件的动态绑定，比如说新增了一个子节点，我们并不需要单独地为它添加一个监听事件，它所发生
+的事件会交给父元素中的监听函数来处理。
+</code></pre></div><h3 id="_11-什么是闭包-为什么要用它"><a href="#_11-什么是闭包-为什么要用它" class="header-anchor">#</a> 11. 什么是闭包，为什么要用它？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，创
+建的函数可以访问到当前函数的局部变量。
+</code></pre></div><p>闭包有两个常用的用途。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>闭包的第一个用途是使我们在函数外部能够访问到函数内部的变量。通过使用闭包，我们可以通过在外部调用闭包
+函数，从而在外部访问到函数内部的变量，可以使用这种方法来创建私有变量。
+
+函数的另一个用途是使已经运行结束的函数上下文中的变量对象继续留在内存中，因为闭包函数保留了这个变量对象
+的引用，所以这个变量对象不会被回收。
+
+其实闭包的本质就是作用域链的一个特殊的应用，只要了解了作用域链的创建过程，就能够理解闭包的实现原理。
+</code></pre></div><h3 id="_12-如何判断一个对象是否属于某个类"><a href="#_12-如何判断一个对象是否属于某个类" class="header-anchor">#</a> 12. 如何判断一个对象是否属于某个类?</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>第一种方式是使用 instanceof 运算符来判断构造函数的 prototype 属性是否出现在对象的原型链中的
+任何位置。
+
+第二种方式可以通过对象的 constructor 属性来判断，对象的 constructor 属性指向该对象的构造函数，
+但是这种方式不是很安全，因为 constructor 属性可以被改写。
+
+第三种方式，如果需要判断的是某个内置的引用类型的话，可以使用 Object.prototype.toString<span class="token punctuation">(</span><span class="token punctuation">)</span> 方法
+来打印对象的<span class="token punctuation">[</span><span class="token punctuation">[</span>Class<span class="token punctuation">]</span><span class="token punctuation">]</span> 属性来进行判断。
+</code></pre></div><h3 id="_13-instanceof-的作用及实现。"><a href="#_13-instanceof-的作用及实现。" class="header-anchor">#</a> 13.  instanceof 的作用及实现。</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>// instanceof 运算符用于判断构造函数的 prototype 属性是否出现在对象的原型链中的任何位置。
+// 实现：
+
+<span class="token keyword">function</span> myInstanceof<span class="token punctuation">(</span>left, right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin class-name">let</span> proto <span class="token operator">=</span> Object.getPrototypeOf<span class="token punctuation">(</span>left<span class="token punctuation">)</span>, // 获取对象的原型
+    prototype <span class="token operator">=</span> right.prototype<span class="token punctuation">;</span> // 获取构造函数的 prototype 对象
+
+  // 判断构造函数的 prototype 对象是否在对象的原型链上
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>proto<span class="token punctuation">)</span> <span class="token builtin class-name">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>proto <span class="token operator">==</span><span class="token operator">=</span> prototype<span class="token punctuation">)</span> <span class="token builtin class-name">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    proto <span class="token operator">=</span> Object.getPrototypeOf<span class="token punctuation">(</span>proto<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_14-new-操作符具体干了什么呢-如何实现"><a href="#_14-new-操作符具体干了什么呢-如何实现" class="header-anchor">#</a> 14. new 操作符具体干了什么呢？如何实现？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>// （1）首先创建了一个新的空对象
+// （2）设置原型，将对象的原型设置为函数的 prototype 对象。
+// （3）让函数的 this 指向这个对象，执行构造函数的代码（为这个新对象添加属性）
+// （4）判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。
+
+// 实现:
+
+<span class="token keyword">function</span> <span class="token function-name function">objectFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin class-name">let</span> newObject <span class="token operator">=</span> null,
+    constructor <span class="token operator">=</span> Array.prototype.shift.call<span class="token punctuation">(</span>arguments<span class="token punctuation">)</span>,
+    result <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+  // 参数判断
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>typeof constructor <span class="token operator">!=</span><span class="token operator">=</span> <span class="token string">&quot;function&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console.error<span class="token punctuation">(</span><span class="token string">&quot;type error&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token builtin class-name">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  // 新建一个空对象，对象的原型为构造函数的 prototype 对象
+  newObject <span class="token operator">=</span> Object.create<span class="token punctuation">(</span>constructor.prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  // 将 this 指向新建对象，并执行函数
+  result <span class="token operator">=</span> constructor.apply<span class="token punctuation">(</span>newObject, arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  // 判断返回对象
+  <span class="token builtin class-name">let</span> flag <span class="token operator">=</span>
+    result <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>typeof result <span class="token operator">==</span><span class="token operator">=</span> <span class="token string">&quot;object&quot;</span> <span class="token operator">||</span> typeof result <span class="token operator">==</span><span class="token operator">=</span> <span class="token string">&quot;function&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  // 判断返回结果
+  <span class="token builtin class-name">return</span> flag ? result <span class="token builtin class-name">:</span> newObject<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+// 使用方法
+// objectFactory<span class="token punctuation">(</span>构造函数, 初始化参数<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_15-javascript-中-有一个函数-执行时对象查找时-永远不会去查找原型-这个函数是"><a href="#_15-javascript-中-有一个函数-执行时对象查找时-永远不会去查找原型-这个函数是" class="header-anchor">#</a> 15. Javascript 中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>hasOwnProperty
+
+所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有
+特定的自身属性，和in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。
+</code></pre></div><h3 id="_16-foreach-call-function-a-a-style-outline-1px-solid-math-random-1-24-tostring-16-能解释一下这段代码的意思吗"><a href="#_16-foreach-call-function-a-a-style-outline-1px-solid-math-random-1-24-tostring-16-能解释一下这段代码的意思吗" class="header-anchor">#</a> 16. [].forEach.call($$(&quot;&quot;),function(a){a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()(1&lt;&lt;24))).toString(16)}) 能解释一下这段代码的意思吗？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>（1）选取页面所有 DOM 元素。在浏览器的控制台中可以使用<span class="token variable">$$</span><span class="token punctuation">(</span><span class="token punctuation">)</span>方法来获取页面中相应的元素，这是现代
+  浏览器提供的一个命令行 API 相当于 document.querySelectorAll 方法。
+
+（2）循环遍历 DOM 元素
+
+（3）给元素添加 outline 。由于渲染的 outline 是不在 CSS 盒模型中的，所以为元素添加 outline 
+  并不会影响元素的大小和页面的布局。
+
+（4）生成随机颜色函数。Math.random<span class="token punctuation">(</span><span class="token punctuation">)</span>*<span class="token punctuation">(</span><span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span><span class="token operator">&lt;</span><span class="token number">24</span><span class="token punctuation">)</span> 可以得到 <span class="token number">0</span>~2^24 - <span class="token number">1</span> 之间的随机数，因为得到的是
+  一个浮点数，但我们只需要整数部分，使用取反操作符 ~ 连续两次取反获得整数部分，然后再用 toString
+  <span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span> 的方式，转换为一个十六进制的字符串。
+
+</code></pre></div><h3 id="_17-js-延迟加载的方式有哪些"><a href="#_17-js-延迟加载的方式有哪些" class="header-anchor">#</a> 17. js 延迟加载的方式有哪些？</h3> <blockquote><p>js 延迟加载，也就是等页面加载完成之后再加载 JavaScript 文件。js 延迟加载有助于提高页面加载速度。</p></blockquote> <p>一般有以下几种方式：</p> <p>defer 属性
+async 属性
+动态创建 DOM 方式
+使用 setTimeout 延迟方法
+让 JS 最后加载</p> <p>回答：</p> <div class="language-js extra-class"><pre class="language-js"><code>js 的加载、解析和执行会阻塞页面的渲染过程，因此我们希望 js 脚本能够尽可能的延迟加载，提高
+页面的渲染速度。
+
+我了解到的几种方式是：
+
+第一种方式是我们一般采用的是将 js 脚本放在文档的底部，来使 js 脚本尽可能的在最后来加载执行。
+
+第二种方式是给 js 脚本添加 defer 属性，这个属性会让脚本的加载与文档的解析同步解析，然后在
+文档解析完成后再执行这个脚本文件，这样的话就能使页面的渲染不被阻塞。多个设置了 defer 属性的
+脚本按规范来说最后是顺序执行的，但是在一些浏览器中可能不是这样。
+
+第三种方式是给 js 脚本添加 <span class="token keyword">async</span> 属性，这个属性会使脚本异步加载，不会阻塞页面的解析过程，
+但是当脚本加载完成后立即执行 js 脚本，这个时候如果文档没有解析完成的话同样会阻塞。多个 <span class="token keyword">async</span> 
+属性的脚本的执行顺序是不可预测的，一般不会按照代码的顺序依次执行。
+
+第四种方式是动态创建 <span class="token constant">DOM</span> 标签的方式，我们可以对文档的加载事件进行监听，当文档加载完成后再动态
+的创建script 标签来引入 js 脚本。
+</code></pre></div><h3 id="_18-ajax-是什么-如何创建一个-ajax"><a href="#_18-ajax-是什么-如何创建一个-ajax" class="header-anchor">#</a> 18. Ajax 是什么? 如何创建一个 Ajax？</h3> <blockquote><p>相关知识点：</p></blockquote> <p>2005 年 2 月，AJAX 这个词第一次正式提出，它是 Asynchronous JavaScript and XML 的缩写，指的是通过 JavaScript 的 异步通信，从服务器获取 XML 文档从中提取数据，再更新当前网页的对应部分，而不用刷新整个网页。</p> <p>具体来说，AJAX 包括以下几个步骤。</p> <p>1.创建 XMLHttpRequest 对象，也就是创建一个异步调用对象
+2.创建一个新的 HTTP 请求，并指定该 HTTP 请求的方法、URL 及验证信息
+3.设置响应 HTTP 请求状态变化的函数
+4.发送 HTTP 请求
+5.获取异步调用返回的数据
+6.使用 JavaScript 和 DOM 实现局部刷新</p> <p>一般实现：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>const SERVER_URL <span class="token operator">=</span> <span class="token string">&quot;/server&quot;</span><span class="token punctuation">;</span>
+
+<span class="token builtin class-name">let</span> xhr <span class="token operator">=</span> new XMLHttpRequest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+// 创建 Http 请求
+xhr.open<span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span>, SERVER_URL, <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+// 设置状态监听函数
+xhr.onreadystatechange <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>this.readyState <span class="token operator">!=</span><span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span>
+
+  // 当请求成功时
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>this.status <span class="token operator">==</span><span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    handle<span class="token punctuation">(</span>this.response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console.error<span class="token punctuation">(</span>this.statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+// 设置请求失败时的监听函数
+xhr.onerror <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console.error<span class="token punctuation">(</span>this.statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+// 设置请求头信息
+xhr.responseType <span class="token operator">=</span> <span class="token string">&quot;json&quot;</span><span class="token punctuation">;</span>
+xhr.setRequestHeader<span class="token punctuation">(</span><span class="token string">&quot;Accept&quot;</span>, <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+// 发送 Http 请求
+xhr.send<span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+// promise 封装实现：
+
+<span class="token keyword">function</span> getJSON<span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  // 创建一个 promise 对象
+  <span class="token builtin class-name">let</span> promise <span class="token operator">=</span> new Promise<span class="token punctuation">(</span>function<span class="token punctuation">(</span>resolve, reject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">let</span> xhr <span class="token operator">=</span> new XMLHttpRequest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    // 新建一个 http 请求
+    xhr.open<span class="token punctuation">(</span><span class="token string">&quot;GET&quot;</span>, url, <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    // 设置状态的监听函数
+    xhr.onreadystatechange <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>this.readyState <span class="token operator">!=</span><span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span>
+
+      // 当请求成功或失败时，改变 promise 的状态
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>this.status <span class="token operator">==</span><span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        resolve<span class="token punctuation">(</span>this.response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        reject<span class="token punctuation">(</span>new Error<span class="token punctuation">(</span>this.statusText<span class="token punctuation">))</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    // 设置错误监听函数
+    xhr.onerror <span class="token operator">=</span> <span class="token function-name function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      reject<span class="token punctuation">(</span>new Error<span class="token punctuation">(</span>this.statusText<span class="token punctuation">))</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    // 设置响应的数据类型
+    xhr.responseType <span class="token operator">=</span> <span class="token string">&quot;json&quot;</span><span class="token punctuation">;</span>
+
+    // 设置请求头信息
+    xhr.setRequestHeader<span class="token punctuation">(</span><span class="token string">&quot;Accept&quot;</span>, <span class="token string">&quot;application/json&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    // 发送 http 请求
+    xhr.send<span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token builtin class-name">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code>我对 ajax 的理解是，它是一种异步通信的方法，通过直接由 js 脚本向服务器发起 http 通信，
+然后根据服务器返回的数据，更新网页的相应部分，而不用刷新整个页面的一种方法。
+
+创建一个 ajax 有这样几个步骤
+
+首先是创建一个 XMLHttpRequest 对象。
+
+然后在这个对象上使用 open 方法创建一个 http 请求，open 方法所需要的参数是请求的方法、请求的地址、
+是否异步和用户的认证信息。
+
+在发起请求前，我们可以为这个对象添加一些信息和监听函数。比如说我们可以通过 setRequestHeader 
+方法来为请求添加头信息。我们还可以为这个对象添加一个状态监听函数。一个 XMLHttpRequest 对象
+一共有 <span class="token number">5</span> 个状态，当它的状态变化时会触发onreadystatechange 事件，我们可以通过设置监听函数，
+来处理请求成功后的结果。当对象的 readyState 变为 <span class="token number">4</span> 的时候，代表服务器返回的数据接收完成，这个
+时候我们可以通过判断请求的状态，如果状态是 2xx 或者 <span class="token number">304</span> 的话则代表返回正常。这个时候我们就可以
+通过 response 中的数据来对页面进行更新了。
+
+当对象的属性和监听函数设置完成后，最后我们调用 sent 方法来向服务器发起请求，可以传入参数作为发送
+的数据体。
+</code></pre></div><h3 id="_19-谈一谈浏览器的缓存机制"><a href="#_19-谈一谈浏览器的缓存机制" class="header-anchor">#</a> 19. 谈一谈浏览器的缓存机制？</h3> <div class="language-js extra-class"><pre class="language-js"><code>浏览器的缓存机制指的是通过在一段时间内保留已接收到的 web 资源的一个副本，如果在资源的有效时间内，
+发起了对这个资源的再一次请求，那么浏览器会直接使用缓存的副本，而不是向服务器发起请求。使用 web 
+缓存可以有效地提高页面的打开速度，减少不必要的网络带宽的消耗。
+
+web 资源的缓存策略一般由服务器来指定，可以分为两种，分别是强缓存策略和协商缓存策略。
+
+使用强缓存策略时，如果缓存资源有效，则直接使用缓存资源，不必再向服务器发起请求。强缓存策略可以通过
+两种方式来设置，分别是 http 头信息中的 Expires 属性和 Cache<span class="token operator">-</span>Control 属性。
+
+服务器通过在响应头中添加 Expires 属性，来指定资源的过期时间。在过期时间以内，该资源可以被缓存使用，
+不必再向服务器发送请求。这个时间是一个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端
+的时间和服务器端的时间不一致，或者用户可以对客户端时间进行修改的情况，这样就可能会影响缓存命中的结果。
+
+Expires 是 http1<span class="token punctuation">.</span><span class="token number">0</span> 中的方式，因为它的一些缺点，在 http <span class="token number">1.1</span> 中提出了一个新的头部属性就是 Cache<span class="token operator">-</span>Control 属性，
+它提供了对资源的缓存的更精确的控制。它有很多不同的值，常用的比如我们可以通过设置 max<span class="token operator">-</span>age 来指定资源
+能够被缓存的时间的大小，这是一个相对的时间，它会根据这个时间的大小和资源第一次请求时的时间来计算出资源
+过期的时间，因此相对于 Expires来说，这种方式更加有效一些。常用的还有比如 <span class="token keyword">private</span> ，用来规定资源只能
+被客户端缓存，不能够代理服务器所缓存。还有如 no<span class="token operator">-</span>store ，用来指定资源不能够被缓存，no<span class="token operator">-</span>cache 代表该资
+源能够被缓存，但是立即失效，每次都需要向服务器发起请求。
+
+一般来说只需要设置其中一种方式就可以实现强缓存策略，当两种方式一起使用时，Cache<span class="token operator">-</span>Control 的优先级要
+高于 Expires 。
+
+使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 <span class="token number">304</span> 状态，让浏览器使用
+本地的缓存副本。
+如果资源发生了修改，则返回修改后的资源。协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag
+ 和 Last<span class="token operator">-</span>Modified 属性。
+
+服务器通过在响应头中添加 Last<span class="token operator">-</span>Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，
+会在请求头中添加一个 If<span class="token operator">-</span>Modified<span class="token operator">-</span>Since 的属性，属性值为上一次资源返回时的 Last<span class="token operator">-</span>Modified 的值。
+当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做
+了修改。如果资源没有修改，那么返回 <span class="token number">304</span> 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修
+改后的资源。使用这种方法有一个缺点，就是 Last<span class="token operator">-</span>Modified 标注的最后修改时间只能精确到秒级，如果某些
+文件在<span class="token number">1</span>秒钟以内，被修改多次的话，那么文件已将改变了但是 Last<span class="token operator">-</span>Modified 却没有改变，这样会造成缓存命
+中的不准确。
+
+因为 Last<span class="token operator">-</span>Modified 的这种可能发生的不准确性，http 中提供了另外一种方式，那就是 Etag 属性。服务器
+在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，
+这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If<span class="token operator">-</span>None<span class="token operator">-</span>Match 属性，这个属性的
+值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，
+以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last<span class="token operator">-</span>Modified 的方式更加精确。
+
+当 Last<span class="token operator">-</span>Modified 和 Etag 属性同时出现的时候，Etag 的优先级更高。使用协商缓存的时候，服务器需要
+考虑负载平衡的问题，因此多个服务器上资源的 Last<span class="token operator">-</span>Modified 应该保持一致，因为每个服务器上 Etag 的
+值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。
+
+强缓存策略和协商缓存策略在缓存命中时都会直接使用本地的缓存副本，区别只在于协商缓存会向服务器发送一
+次请求。它们缓存不命中时，都会向服务器发送请求来获取资源。在实际的缓存机制中，强缓存策略和协商缓存
+策略是一起合作使用的。浏览器首先会根据请求的信息判断，强缓存是否命中，如果命中则直接使用资源。如果
+不命中则根据头信息向服务器发起请求，使用协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器
+直接使用本地资源的副本，如果协商缓存不命中，则浏览器返回最新的资源给浏览器。
+</code></pre></div><h3 id="_20-ajax-解决浏览器缓存问题"><a href="#_20-ajax-解决浏览器缓存问题" class="header-anchor">#</a> 20. Ajax 解决浏览器缓存问题？</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token number">1</span>.在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader<span class="token punctuation">(</span><span class="token string">&quot;If-Modified-Since&quot;</span>,<span class="token string">&quot;0&quot;</span><span class="token punctuation">)</span>。
+
+<span class="token number">2</span>.在 ajax 发送请求前加上 anyAjaxObj.setRequestHeader<span class="token punctuation">(</span><span class="token string">&quot;Cache-Control&quot;</span>,<span class="token string">&quot;no-cache&quot;</span><span class="token punctuation">)</span>。
+
+<span class="token number">3</span>.在 URL 后面加上一个随机数：<span class="token string">&quot;fresh=&quot;</span> + Math.random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>。
+
+<span class="token number">4</span>.在 URL 后面加上时间戳：<span class="token string">&quot;nowtime=&quot;</span> + new Date<span class="token punctuation">(</span><span class="token punctuation">)</span>.getTime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>。
+
+<span class="token number">5</span>.如果是使用 jQuery，直接这样就可以了$.ajaxSetup<span class="token punctuation">(</span><span class="token punctuation">{</span>cache:false<span class="token punctuation">}</span><span class="token punctuation">)</span>。这样页面的所有 ajax 都会
+执行这条语句就是不需要保存缓存记录。
+</code></pre></div></div></div></div> <div class="el-card py-3 px-3 mb-4 is-always-shadow"><!----><div class="el-card__body"><span>时人不识临云木，直待凌云道始高</span></div></div> <div class="el-card mb-4 is-always-shadow"><div class="el-card__header"><div class="clearfix"><h5 class="m-0">
+            Read more
+          </h5></div></div><div class="el-card__body"> <div class="container featured-posts my-4"><div class="el-carousel el-carousel--horizontal el-carousel--card"><div class="el-carousel__container" style="height:300px;"><button type="button" class="el-carousel__arrow el-carousel__arrow--left" style="display:none;"><i class="el-icon-arrow-left"></i></button><button type="button" class="el-carousel__arrow el-carousel__arrow--right" style="display:none;"><i class="el-icon-arrow-right"></i></button><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://img.zcool.cn/community/01f9fc5c432d69a801203d22d4b81a.jpg@1280w_1l_2o_100sh.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          JavaScript基础问题(一)
+        </h4> <a href="/2023/02/13/js%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-01/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://www.2008php.com/2011_Website_appreciate/2011-09-23/20110923163645.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          JavaScript基础问题(二)
+        </h4> <a href="/2023/02/14/js%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-02/" aria-current="page" class="el-button el-button--primary router-link-exact-active router-link-active">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://i.picsum.photos/id/79/800/600.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          Create a modern vuepress blog in 5 minutes!
+        </h4> <a href="/2019/10/14/vuepress-modern-blog-theme/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(https://img.zcool.cn/community/01cf6858635528a8012060c8b33f77.jpg@1280w_1l_2o_100sh.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见面试题
+        </h4> <a href="/2023/02/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98-03/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://pic.bizhi360.com/bbpic/76/5776.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue面试题(二)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue-05/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://img.pconline.com.cn/images/upload/upc/tx/itbbs/2003/10/c9/196420048_1583835136058.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue面试题(一)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue-04/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div><div class="el-carousel__item carousel-card bg-cover border-10 el-carousel__item--card" style="transform:translateX(0px) scale(1);ms-transform:translateX(0px) scale(1);webkit-transform:translateX(0px) scale(1);display:none;background-image:url(http://up.deskcity.org/pic_source/d6/a6/3c/d6a63c350c8ea49404a71face8f969b5.jpg);background-blend-mode:multiply;background-size:cover;background-color:rgba(0,0,0,0.3);"><div class="el-carousel__mask"></div><div class="carousel-card-content d-flex justify-content-center align-items-center flex-column h-100"><h4 class="story-title text-center h4 mb-3 text-light">
+          前端常见vue3面试题(三)
+        </h4> <a href="/2023/02/16/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98vue3-06/" class="el-button el-button--primary">
+          Read this Post <i class="el-icon-arrow-right"></i></a></div></div></div><ul class="el-carousel__indicators el-carousel__indicators--horizontal el-carousel__indicators--outside"></ul></div></div></div></div> <div class="el-card is-always-shadow"><div class="el-card__header"><div class="clearfix"><h5 class="m-0">
+            Tags
+          </h5></div></div><div class="el-card__body"> <div><a href="/tag/JavaScript" class="el-button el-button--small text-decoration-none d-inline-block mb-3">
+            #JavaScript
+          </a><a href="/tag/面试题" class="el-button el-button--small text-decoration-none d-inline-block mb-3">
+            #面试题
+          </a></div></div></div> <!----></main></div> <footer class="footer" data-v-85a2b3d2><div class="footer-left-wrap" data-v-85a2b3d2><ul class="contact" data-v-85a2b3d2><li class="contact-item" data-v-85a2b3d2><a href="https://github.com/yeCodings" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-85a2b3d2><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-85a2b3d2></path></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram" data-v-85a2b3d2><rect x="2" y="2" width="20" height="20" rx="5" ry="5" data-v-85a2b3d2></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" data-v-85a2b3d2></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" data-v-85a2b3d2></line></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin" data-v-85a2b3d2><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" data-v-85a2b3d2></path><rect x="2" y="9" width="4" height="12" data-v-85a2b3d2></rect><circle cx="4" cy="4" r="2" data-v-85a2b3d2></circle></svg>
+          
+        </a></li><li class="contact-item" data-v-85a2b3d2><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="external" data-v-85a2b3d2><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-85a2b3d2><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-85a2b3d2></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-85a2b3d2><ul class="copyright" data-v-85a2b3d2><li class="copyright-item" data-v-85a2b3d2><a data-v-85a2b3d2>MIT Licensed | Copyright © 2018-present Vue.js</a></li></ul></div></footer> <!----></div><div class="global-ui"><!----><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:-1;" data-v-248d85d6></canvas></div></div></div>
+    <script src="/assets/js/app.910dc115.js" defer></script><script src="/assets/js/4.5b8d8b22.js" defer></script><script src="/assets/js/14.95c14d5f.js" defer></script><script src="/assets/js/6.d2ea23d8.js" defer></script>
+  </body>
+</html>
